@@ -2,7 +2,7 @@
 
 เว็บแสดงความยินดีกับ **เฟรน** ที่เรียนจบจาก **มหาวิทยาลัยเกษตรศาสตร์ (KU 82)** ในธีม Netflix
 
-**🔗 เปิดเว็บ:** https://friendflix.streamlit.app
+**🔗 เปิดเว็บ:** [https://friendflix.streamlit.app](https://congratna.streamlit.app/)
 
 ## Flow
 
