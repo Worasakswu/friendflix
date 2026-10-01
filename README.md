@@ -6,9 +6,9 @@
 
 ## Flow
 
-1. **Instagram** — แตะสตอรี่ `friend__ft` ที่มีวงแดง
+1. **Instagram** — หน้าไม่ระบุตัวตน แตะสตอรี่ที่มีวงแดง
 2. **Intro** — โลโก้ **F** + เสียง ta-dum
-3. **Who's watching?** — เลือกโปรไฟล์ Friend
+3. **Who's watching?** — เลือก Graduate (หรือ Add profile)
 4. **Home** — *FRIEND* series, Continue Watching (ปี 1–4), Top 10, Categories
 5. **Details** — *Friend: The Graduate* · Download (โปสเตอร์ที่ระลึก) · Rate · Share
 6. **Play** — สไลด์โชว์ + เพลง → **Series Finale: Congratulations 🎓**

@@ -8,7 +8,7 @@ import streamlit.components.v1 as components
 ROOT = Path(__file__).parent
 
 st.set_page_config(
-    page_title="Friendflix · Congrats Friend 🎓",
+    page_title="Congrats, Graduate! 🎓",
     page_icon="🎓",
     layout="wide",
     initial_sidebar_state="collapsed",

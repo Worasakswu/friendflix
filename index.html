@@ -87,7 +87,7 @@ img{display:block}
 .ph-txt{flex:1;line-height:1.25}
 .ph-txt b{font-size:14px;font-weight:600}
 .ph-txt small{display:block;font-size:12px;color:#262626}
-.post-img{position:relative;aspect-ratio:4/5;background:#efefef;overflow:hidden;user-select:none}
+.post-img{position:relative;aspect-ratio:4/5;background:#dadada;overflow:hidden;user-select:none}
 .post-img img{width:100%;height:100%;object-fit:cover}
 .pcount{position:absolute;top:12px;right:12px;background:rgba(0,0,0,.65);color:#fff;font-size:12px;font-weight:600;padding:4px 9px;border-radius:12px}
 .big-heart{position:absolute;left:50%;top:50%;width:96px;height:96px;margin:-48px 0 0 -48px;fill:#fff;stroke:none;opacity:0;transform:scale(.2);filter:drop-shadow(0 4px 12px rgba(0,0,0,.3))}
@@ -102,7 +102,10 @@ img{display:block}
 .pdots i.on{background:#0095f6}
 .post-meta{padding:2px 14px 18px;font-size:14px;line-height:1.5}
 .ig-nav{display:flex;justify-content:space-around;align-items:center;height:calc(50px + var(--hb));padding-bottom:var(--hb);border-top:1px solid #efefef;background:#fff}
-.ig-nav .me{width:26px;height:26px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1.5px #000}
+.ig-nav .me{display:block;width:26px;height:26px;border-radius:50%;background:#dbdbdb;box-shadow:0 0 0 1.5px #000}
+.mini .av{display:block;width:100%;height:100%;border-radius:50%;border:2px solid #fff;background:#dbdbdb}
+.skel-line{display:block;height:9px;border-radius:5px;background:#e4e4e4;margin:3px 0}
+.skel-line.sm{height:7px;background:#efefef;margin-top:7px}
 
 /* ---------- intro ---------- */
 .intro{display:grid;place-items:center;background:#000;will-change:clip-path}
@@ -472,9 +475,9 @@ img{display:block}
           <div class="ring"><span class="av"></span><span class="plus-b">+</span></div>
           <span class="lbl">Your story</span>
         </div>
-        <button class="story" id="friendStory" aria-label="friend__ft story">
-          <div class="ring live" id="friendRing"><img data-img="avatar" alt=""></div>
-          <span class="lbl b">friend__ft</span>
+        <button class="story" id="friendStory" aria-label="Open story">
+          <div class="ring live" id="friendRing"><span class="av"></span></div>
+          <span class="lbl skel"></span>
           <svg class="tap-hint" viewBox="0 0 32 32"><path d="M12.5 3.5a2.2 2.2 0 0 1 4.4 0v9.2l6.3 1.6c1.6.4 2.6 2 2.3 3.6l-1.2 7.4a4 4 0 0 1-4 3.3h-6.6a4 4 0 0 1-3.2-1.6l-5.3-7a2.1 2.1 0 0 1 3.2-2.7l2.6 2.6V3.5z" fill="#fff" stroke="#111" stroke-width="1.6" stroke-linejoin="round"/></svg>
         </button>
         <div class="story"><div class="ring seen"><span class="av"></span></div><span class="lbl skel"></span></div>
@@ -484,12 +487,11 @@ img{display:block}
       </div>
       <article class="post">
         <div class="post-head">
-          <button class="mini" id="postAv" aria-label="friend__ft story"><img data-img="avatar" alt=""></button>
-          <div class="ph-txt"><b>friend__ft</b><small>Kasetsart University</small></div>
+          <button class="mini" id="postAv" aria-label="Open story"><span class="av"></span></button>
+          <div class="ph-txt"><span class="skel-line" style="width:96px"></span><span class="skel-line sm" style="width:138px"></span></div>
           <svg class="ic"><use href="#i-more"/></svg>
         </div>
         <div class="post-img" id="postImg">
-          <img data-img="hero" alt="">
           <span class="pcount">1/7</span>
           <svg class="big-heart" id="bigHeart"><use href="#i-heart"/></svg>
         </div>
@@ -501,7 +503,7 @@ img{display:block}
           <span class="grow"></span>
           <svg class="ic"><use href="#i-bookmark"/></svg>
         </div>
-        <div class="post-meta"><b>Likes: <span id="likes">1,082</span></b><div><b>friend__ft</b> 🎓</div></div>
+        <div class="post-meta"><b>Likes: <span id="likes">1,082</span></b><span class="skel-line" style="width:72%;margin-top:9px"></span><span class="skel-line" style="width:46%"></span></div>
       </article>
     </div>
     <nav class="ig-nav">
@@ -509,7 +511,7 @@ img{display:block}
       <svg class="ic"><use href="#i-search"/></svg>
       <svg class="ic"><use href="#i-reels"/></svg>
       <svg class="ic"><use href="#i-heart"/></svg>
-      <img class="me" data-img="avatar" alt="">
+      <span class="me"></span>
     </nav>
   </section>
 
@@ -523,10 +525,8 @@ img{display:block}
   <section class="screen nf profiles" id="s-profiles">
     <header class="pf-head"><span></span><h1>Who's watching?</h1><button class="pf-edit">Edit</button></header>
     <div class="pf-grid">
-      <button class="pf me" style="--d:.05s"><div class="pf-img"><img data-img="p6" alt=""></div><span>Friend</span></button>
-      <button class="pf" style="--d:.13s"><div class="pf-img grad"><svg width="74" height="56"><use href="#cap"/></svg></div><span>Graduate</span></button>
-      <button class="pf" style="--d:.21s"><div class="pf-img ku"><b>KU</b><small>82</small></div><span>KU 82</span></button>
-      <button class="pf" style="--d:.29s"><div class="pf-img plus"><svg class="ic"><use href="#i-plus"/></svg></div><span>Add profile</span></button>
+      <button class="pf me" style="--d:.05s"><div class="pf-img grad"><svg width="74" height="56"><use href="#cap"/></svg></div><span>Graduate</span></button>
+      <button class="pf" style="--d:.15s"><div class="pf-img plus"><svg class="ic"><use href="#i-plus"/></svg></div><span>Add profile</span></button>
     </div>
     <div class="nf-spinner"></div>
   </section>
@@ -742,7 +742,6 @@ const APP_URL = '';
 
 const IMG = {
   hero: 'assets/hero.jpg',
-  avatar: 'assets/avatar.jpg',
   p1: 'assets/p1.jpg',
   p2: 'assets/p2.jpg',
   p3: 'assets/p3.jpg',
@@ -751,7 +750,7 @@ const IMG = {
   p7: 'assets/p7.jpg'
 };
 // vertical focus (%) so faces stay in frame when cropped
-const FOCUS = { hero: 58, avatar: 50, p1: 22, p2: 32, p3: 55, p4: 38, p6: 38, p7: 58 };
+const FOCUS = { hero: 58, p1: 22, p2: 32, p3: 55, p4: 38, p6: 38, p7: 58 };
 const EPISODES = [
   { key: 'p1', t: 'Freshy', s: 1 },
   { key: 'p3', t: 'Year Two', s: 2 },
