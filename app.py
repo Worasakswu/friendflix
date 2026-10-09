@@ -40,10 +40,12 @@ def build_page(version: tuple) -> str:
 
     def to_data_uri(match: re.Match) -> str:
         path = ROOT / match.group(0)
-        mime = "image/png" if path.suffix.lower() == ".png" else "image/jpeg"
+        if not path.exists():
+            return match.group(0)
+        mime = {".png": "image/png", ".glb": "model/gltf-binary"}.get(path.suffix.lower(), "image/jpeg")
         return f"data:{mime};base64," + base64.b64encode(path.read_bytes()).decode()
 
-    return re.sub(r"assets/[\w.-]+\.(?:jpg|jpeg|png)", to_data_uri, html)
+    return re.sub(r"assets/[\w.-]+\.(?:jpg|jpeg|png|glb)", to_data_uri, html)
 
 
 # Cache key follows file changes, so edits show up without restarting the app.

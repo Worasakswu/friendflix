@@ -8,6 +8,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Noto+Serif+Thai:wght@300;400;500&family=Permanent+Marker&display=swap" rel="stylesheet">
 <style>
+.model3d{padding:clamp(80px,12vh,140px) var(--pad);text-align:center}
+.model3d model-viewer{width:100%;height:min(75vh,680px);background:transparent;--poster-color:transparent}
+.model3d .label{margin-top:14px}
+.th-done{font-family:\'Noto Serif Thai\',serif;font-weight:300;font-size:.62em}
 :root{
   --bg:#f2efe9; --bg2:#ebe6dd; --ink:#1d1a16; --mute:#8d867b; --line:#d9d2c6; --dark:#1c1815; --accent:#c4893f;
   --serif:'Instrument Serif','Noto Serif Thai',Georgia,serif;
@@ -147,6 +151,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.loader .logo{clip-path:none}}
 </style>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4/dist/model-viewer.min.js"></script>
 </head>
 <body class="locked">
 
@@ -157,7 +162,6 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
   <a href="#top" class="logo">Friend</a>
   <ul>
     <li><a href="#story">เรื่องราว</a></li>
-    <li><a href="#memories">ความทรงจำ</a></li>
     <li><a href="#cheers">ยินดีด้วย</a></li>
   </ul>
   <span></span>
@@ -165,8 +169,8 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
 
 <main id="top">
   <section class="hero">
-    <p class="label rise">บัณฑิตใหม่ · มหาวิทยาลัยเกษตรศาสตร์</p>
-    <h1 class="rise"><span class="l1">ยินดีด้วยนะ</span><span class="l2"><em>Friend</em>, graduate</span></h1>
+    <p class="rise" style="font-size:28px">🦉🦉☔</p>
+    <h1 class="rise"><span class="l1">ยินดีด้วยนะ</span><span class="l2"><em>Friend</em>, <span class="th-done">จบแล้วว:))</span></span></h1>
     <p class="lead rise">สี่ปีแห่งความตั้งใจ<br>วันนี้ถึงเวลาเฉลิมฉลองแล้ว</p>
     <div class="hero-foot">
       <button class="sound" id="sound" aria-label="เปิด/ปิดเพลง"><span class="bars"><i></i><i></i><i></i><i></i></span></button>
@@ -180,34 +184,19 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
         <div class="bgimg" data-bg="heroBlur"></div>
         <img class="fg" data-img="hero" alt="เฟรน">
       </div>
-      <div class="cap" id="revealCap"><span class="label en">KU 82 · Class of 2026</span><p>The Graduate</p></div>
+      <div class="cap" id="revealCap"><p>Congratulations</p></div>
     </div>
   </section>
 
-  <section class="quote" id="story">
-    <p id="quoteText">สี่ปีที่ผ่านมา | เธอเรียน | เธอเหนื่อย | เธอหัวเราะ | และไม่เคยยอมแพ้ | วันนี้ | ทุกอย่าง | กลายเป็น | ใบปริญญาหนึ่งใบ | กับรอยยิ้ม | ที่สวยที่สุด</p>
-    <p class="label sign rise">— จากเพื่อนคนหนึ่ง</p>
-  </section>
-
-  <section id="memories">
-    <div class="section-head"><h2>ความทรงจำ <em>four years</em></h2><span class="label en">01</span></div>
-    <article class="mem">
-      <div class="pic rise" data-lb="p1"><img data-img="p1" alt=""></div>
-      <div class="txt rise"><span class="label">ปีที่ 1</span><h3>เฟรชชี่<em>The Beginning</em></h3><button class="more" data-lb="p1">ดูภาพ →</button></div>
-    </article>
+  <section class="model3d" id="story">
+    <model-viewer src="assets/icon.glb" alt="โมเดล 3 มิติ" camera-controls touch-action="pan-y" auto-rotate rotation-per-second="20deg" shadow-intensity="1" exposure="1" interaction-prompt="auto"></model-viewer>
+    <p class="label">ลากเพื่อหมุนดูได้รอบทิศ</p>
   </section>
 
   <section class="band" aria-hidden="true">
     <div class="track" id="track">
       <span>Congratulations</span><b></b><span class="th">ยินดีด้วยนะเฟรน</span><b></b><span>Kasetsart University</span><b></b><span>KU 82</span><b></b><span class="th">บัณฑิตใหม่</span><b></b><span>Class of 2026</span><b></b>
     </div>
-  </section>
-
-  <section class="bleed">
-    <div class="bgimg" data-bg="p4Blur"></div>
-    <div class="over"></div>
-    <img class="fg" data-img="p4" alt="">
-    <div class="txt rise"><span class="label">บทต่อไป</span><h2>ก้าวต่อไปของเธอ<br>เริ่มต้นแล้ว</h2></div>
   </section>
 
   <section class="finale" id="cheers">
@@ -263,10 +252,6 @@ $('#loader').addEventListener('click', openPage);
 // marquee: duplicate content for a seamless loop
 const track = $('#track'); track.innerHTML += track.innerHTML;
 
-// quote phrases light up as you scroll
-const q = $('#quoteText');
-q.innerHTML = q.textContent.split('|').map(w => `<span>${w.trim()}</span>`).join(' ');
-const words = $$('span', q);
 
 const io = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
@@ -288,10 +273,6 @@ function onScroll() {
   frame.style.setProperty('--s', (1.15 - .15 * e).toFixed(3));
   cap.style.setProperty('--co', clamp((p - .65) / .25).toFixed(2));
 
-  const qr = q.getBoundingClientRect();
-  const qp = clamp((h * .82 - qr.top) / (qr.height + h * .3));
-  const lit = Math.round(qp * words.length);
-  words.forEach((w, i) => w.classList.toggle('lit', i < lit));
 }
 addEventListener('scroll', onScroll, { passive: true });
 addEventListener('resize', onScroll);
