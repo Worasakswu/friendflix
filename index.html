@@ -135,7 +135,7 @@ a{color:inherit;text-decoration:none}
 .track img[data-img="jelly"]{height:clamp(56px,7.7vw,84px)}
 .finale model-viewer{width:100%;height:min(62vh,560px);background:transparent;cursor:pointer}
 .slider{--x:0px;position:relative;width:min(300px,86vw);height:60px;margin:18px auto 0;border-radius:30px;background:#e6e0d5;box-shadow:inset 0 1px 3px rgba(0,0,0,.12);overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none}
-.slider-fill{position:absolute;left:4px;top:4px;bottom:4px;width:calc(var(--x) + 26px);border-radius:26px;background:#34c759}
+.slider-fill{position:absolute;left:4px;top:4px;bottom:4px;width:calc(var(--x) + 26px);border-radius:26px;background:linear-gradient(90deg,#8a5a2b,#c4893f 70%,#d9a85c)}
 .slider-text{position:absolute;inset:0;display:grid;place-items:center;padding-left:40px;font-size:15px;color:#6d665d;pointer-events:none;
   background:linear-gradient(90deg,#6d665d 0%,#6d665d 40%,#fff 50%,#6d665d 60%,#6d665d 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 2.6s linear infinite;transition:opacity .2s}
 @keyframes shine{from{background-position:100% 0}to{background-position:-150% 0}}
@@ -201,7 +201,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
   </section>
 
   <section class="model3d" id="story">
-    <model-viewer src="assets/icon.glb" alt="โมเดล 3 มิติ" camera-controls touch-action="pan-y" auto-rotate rotation-per-second="20deg" shadow-intensity="1" exposure="1" interaction-prompt="auto"></model-viewer>
+    <model-viewer src="assets/icon.glb" camera-orbit="0deg 80deg 130%" alt="โมเดล 3 มิติ" camera-controls touch-action="pan-y" auto-rotate rotation-per-second="20deg" shadow-intensity="1" exposure="1" interaction-prompt="auto"></model-viewer>
     <p class="label">หมุนด้าย</p>
   </section>
 
@@ -212,7 +212,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
   </section>
 
   <section class="finale" id="cheers">
-    <model-viewer id="envelope" src="assets/envelope.glb" alt="จดหมาย" camera-controls touch-action="pan-y" auto-rotate rotation-per-second="18deg" shadow-intensity="1" exposure="1.05" interaction-prompt="none" camera-orbit="0deg 62deg auto" field-of-view="32deg" min-field-of-view="22deg"></model-viewer>
+    <model-viewer id="envelope" src="assets/envelope.glb" alt="จดหมาย" camera-controls touch-action="pan-y" auto-rotate rotation-per-second="18deg" shadow-intensity="1" exposure="1.05" interaction-prompt="none" camera-orbit="0deg 62deg 125%" field-of-view="32deg" min-field-of-view="22deg"></model-viewer>
     <div class="slider" id="slider" role="slider" aria-label="เลื่อนเพื่อเปิดจดหมาย" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
       <div class="slider-fill" id="sliderFill"></div>
       <span class="slider-text">เลื่อนเพื่อเปิดจดหมาย</span>
