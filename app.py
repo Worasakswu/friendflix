@@ -8,7 +8,7 @@ import streamlit.components.v1 as components
 ROOT = Path(__file__).parent
 
 st.set_page_config(
-    page_title="Congrats, Graduate! 🎓",
+    page_title="ยินดีด้วยนะ เฟรน 🎓",
     page_icon="🎓",
     layout="wide",
     initial_sidebar_state="collapsed",
@@ -48,4 +48,4 @@ def build_page(version: tuple) -> str:
 
 # Cache key follows file changes, so edits show up without restarting the app.
 version = tuple((p.name, p.stat().st_mtime_ns) for p in [ROOT / "index.html", *sorted((ROOT / "assets").iterdir())])
-components.html(build_page(version), height=860, scrolling=False)
+components.html(build_page(version), height=860, scrolling=True)

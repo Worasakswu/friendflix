@@ -1,19 +1,18 @@
-# 🎓 Friendflix — Congrats, Friend!
+# 🎓 ยินดีด้วยนะ เฟรน
 
-เว็บแสดงความยินดีกับ **เฟรน** ที่เรียนจบจาก **มหาวิทยาลัยเกษตรศาสตร์ (KU 82)** ในธีม Netflix
+เว็บแสดงความยินดีกับ **เฟรน** ที่เรียนจบจาก **มหาวิทยาลัยเกษตรศาสตร์ (KU 82)**
+ดีไซน์แนวแกลเลอรีมินิมอล โทนกระดาษ ตัวอักษรเซริฟ (อ้างอิงสไตล์จาก [eirdis.com](https://www.eirdis.com/))
 
 **🔗 เปิดเว็บ:** https://congratna.streamlit.app
 
-## Flow
+## หน้าเว็บ
 
-1. **Instagram** — หน้าไม่ระบุตัวตน แตะสตอรี่ที่มีวงแดง
-2. **Intro** — โลโก้ **F** + เสียง ta-dum
-3. **Who's watching?** — เลือก Graduate (หรือ Add profile)
-4. **Home** — *FRIEND* series, Continue Watching (ปี 1–4), Top 10, Categories
-5. **Details** — *Friend: The Graduate* · Download (โปสเตอร์ที่ระลึก) · Rate · Share
-6. **Play** — สไลด์โชว์ + เพลง → **Series Finale: Congratulations 🎓**
-
-มีหน้า Search, Categories, New & Hot และ My Friendflix ด้วย
+1. **Intro** — โลโก้ลายมือ *Friend* ค่อย ๆ เขียนขึ้นมา
+2. **Hero** — ยินดีด้วยนะ / *Friend*, graduate · ปุ่มเปิดเพลง
+3. **ภาพเปิดตัว** — รูปขยายเต็มจอเมื่อเลื่อนลง
+4. **เรื่องราว** — ข้อความที่ค่อย ๆ ชัดขึ้นตามการเลื่อน
+5. **ความทรงจำ** — ปีที่ 1–4 (กดดูภาพได้)
+6. **บทต่อไป** · **ช่วงเวลา** · **ยินดีด้วย** (มีคอนเฟตตี)
 
 ## Run locally
 
@@ -22,8 +21,6 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-`index.html` เปิดตรง ๆ ผ่าน static server ได้เหมือนกัน (`python -m http.server`)
-
 ## Files
 
 | Path | |
@@ -31,3 +28,5 @@ streamlit run app.py
 | `index.html` | หน้าเว็บทั้งหมด (HTML/CSS/JS) |
 | `app.py` | Streamlit wrapper — ฝังรูปเป็น data URI แล้วแสดงเต็มจอ |
 | `assets/` | รูปของเฟรน |
+
+เวอร์ชันธีม Netflix เดิมยังอยู่ใน git history (คอมมิต `46ee381`)
