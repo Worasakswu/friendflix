@@ -132,23 +132,25 @@ a{color:inherit;text-decoration:none}
 .card span{position:absolute;left:12px;bottom:12px;z-index:1;color:#fff;font-size:13px;letter-spacing:.04em;font-weight:500}
 
 /* ---------- finale / footer ---------- */
-.finale{padding:clamp(110px,18vh,220px) var(--pad) 90px;text-align:center;border-top:1px solid var(--line)}
-.finale h2{font-family:'Noto Serif Thai',serif;font-weight:300;font-size:clamp(46px,9vw,130px);line-height:1.2;margin-top:22px}
-.finale h2 em{display:block;font-family:var(--serif);font-style:italic;font-size:.8em;line-height:1}
-.finale .from{margin-top:34px;font-size:16px;color:#4a443d}
-.finale .logo{font-size:clamp(40px,6vw,64px);margin-top:12px}
-.cheer{margin-top:42px;display:inline-flex;align-items:center;gap:10px;border:1px solid var(--ink);border-radius:40px;padding:13px 26px;font-size:15px;transition:background .25s,color .25s}
-.cheer:hover{background:var(--ink);color:var(--bg)}
+.track img[data-img="jelly"]{height:clamp(56px,7.7vw,84px)}
+.finale model-viewer{width:100%;height:min(62vh,560px);background:transparent;cursor:pointer}
+.open-letter{margin-top:18px;display:inline-flex;align-items:center;gap:10px;border:1px solid var(--ink);border-radius:40px;padding:13px 26px;font-size:15px;transition:background .25s,color .25s}
+.open-letter:hover{background:var(--ink);color:var(--bg)}
+.letter{position:fixed;inset:0;z-index:260;background:rgba(28,24,21,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:grid;place-items:center;padding:18px;opacity:0;visibility:hidden;transition:opacity .45s,visibility .45s}
+.letter.on{opacity:1;visibility:visible}
+.paper{position:relative;width:min(640px,100%);max-height:86vh;overflow-y:auto;background:#fbf8f2;border-radius:3px;padding:clamp(28px,5vw,56px) clamp(22px,5vw,52px);box-shadow:0 30px 80px rgba(0,0,0,.35);transform:translateY(40px) scale(.97);transition:transform .6s cubic-bezier(.2,.8,.2,1);text-align:left}
+.letter.on .paper{transform:none}
+.paper p{font-size:16px;line-height:1.85;color:#2b2621;margin-bottom:1.6em}
+.paper p[lang=th]{font-family:'IBM Plex Sans Thai',sans-serif}
+.paper p[lang=en]{font-family:'Instrument Serif',Georgia,serif;font-size:19px;line-height:1.6}
+.paper p[lang=ko]{font-family:'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif}
+.paper p[lang=ja]{font-family:'Noto Sans JP','Yu Gothic','Hiragino Sans',sans-serif}
+.paper .logo{font-size:34px;display:block;text-align:right}
+.close-letter{position:sticky;top:0;float:right;margin:-10px -10px 0 0;width:36px;height:36px;border-radius:50%;background:#efe9df}
+.finale{padding:clamp(90px,14vh,160px) var(--pad) 70px;text-align:center;border-top:1px solid var(--line)}
 footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:26px var(--pad);border-top:1px solid var(--line)}
 #confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:150}
 
-/* ---------- lightbox ---------- */
-.lb{position:fixed;inset:0;z-index:250;background:rgba(242,239,233,.96);display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s;cursor:zoom-out}
-.lb.on{opacity:1;visibility:visible}
-.lb img{max-height:82vh;max-width:88vw;box-shadow:0 30px 70px rgba(0,0,0,.2);transform:scale(.96);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
-.lb.on img{transform:none}
-.lb p{position:absolute;bottom:22px;left:0;right:0;text-align:center}
-.lb .x{position:absolute;top:18px;right:var(--pad);font-size:12px;letter-spacing:.24em}
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.loader .logo{clip-path:none}}
 </style>
@@ -200,17 +202,23 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
   </section>
 
   <section class="finale" id="cheers">
-    <p class="label rise">มหาวิทยาลัยเกษตรศาสตร์ · KU 82</p>
-    <h2 class="rise">ยินดีด้วยนะ<em>Congratulations</em></h2>
-    <p class="from rise">ภูมิใจในตัวเธอเสมอ</p>
-    <div class="rise"><span class="logo">Friend</span></div>
-    <button class="cheer rise" id="cheer">🎓 ส่งความยินดี</button>
+    <model-viewer id="envelope" src="assets/envelope.glb" alt="จดหมาย" camera-controls touch-action="pan-y" auto-rotate rotation-per-second="18deg" shadow-intensity="1" exposure="1.05" interaction-prompt="none" camera-orbit="0deg 62deg auto" field-of-view="24deg" min-field-of-view="18deg"></model-viewer>
+    <button class="open-letter" id="openLetter">✉ เปิดจดหมาย</button>
   </section>
 </main>
 
 <footer><span class="label en">Friend · The Graduate</span><span class="label en">2026</span></footer>
 
-<div class="lb" id="lb"><button class="x label">ปิด ✕</button><img id="lbImg" alt=""><p class="label" id="lbCap"></p></div>
+<div class="letter" id="letter" role="dialog" aria-label="จดหมาย">
+  <div class="paper">
+    <button class="close-letter" id="closeLetter" aria-label="ปิด">✕</button>
+      <p lang="th">ยินดีด้วยน้าเฟรนขอโทษที่สุดท้ายไม่ได้ไป ก้อคิดว่าทำเว็บแสดงความยินดีอย่างนี้ให้แทนละกันน เป็นคนในออนไลน์ที่แท้ทรูฮ่าๆ แบบเรารู้จักจากในแอปไม่ได้เจอตัวจริง ก็จากที่ได้คุยมาสัมผัสได้ว่าเฟรนเป็นคนดีคนนึง(ที่ยังไม่เจอความรักที่ดี)555ไม่ต้องเส้าเดะเจอๆ มันจะมาในวันที่เราไม่ได้คาดคิด เอาใจช่วยทุกเรื่องน่ะคับ รักตัวเองเยอะๆด้วยเช่นกัน แวะมาเล่าระบายอะไรต่างได้รับฟังงเหมือนเดิม🍁🍁🍁</p>
+      <p lang="en">Congratulations, Friend! I’m so sorry I couldn't make it in the end, so I thought I’d create this congratulatory website for you instead. We’re truly "online friends"—we met through an app and haven't met in person—but from our chats, I can tell you’re a genuinely good person (who just hasn't found the right love yet, haha). Don't be sad; you'll find it eventually—it usually shows up when you least expect it. I’m rooting for you in everything, and remember to love yourself, too. Feel free to drop by and vent or share whatever’s on your mind—I’m always here to listen. 🍁🍁🍁</p>
+      <p lang="ko">축하해요, 친구님! 결국 직접 찾아뵙지 못해 정말 아쉬운 마음에, 대신 이렇게 축하 웹사이트를 만들어 보았어요. 우리는 앱을 통해 알게 되어 실제로 만난 적은 없지만, 대화를 나누면서 정말 좋은 분이라는 걸 느낄 수 있었답니다(단지 아직 딱 맞는 인연을 만나지 못했을 뿐이죠, 하하). 너무 슬퍼하지 마세요. 언젠가 꼭 좋은 인연을 만나게 될 거예요. 사랑은 보통 전혀 예상치 못한 순간에 찾아오곤 하니까요. 언제나 당신을 응원할게요. 그리고 무엇보다 스스로를 아끼고 사랑하는 마음 잊지 마세요. 언제든 편하게 들러서 속마음을 털어놓거나 이런저런 이야기를 나눠주세요. 제가 항상 여기서 들어드릴게요. 🍁🍁🍁</p>
+      <p lang="ja">おめでとう！結局そちらに行けなくて本当にごめんね。その代わりに、お祝いのウェブサイトを作ってみたよ。私たちはアプリで知り合って直接会ったことはない、まさに「ネット上の友達」だけど、やり取りをしていて、あなたが本当に素敵な人だってことはすごく伝わってくるよ（ただ、まだ運命の相手に出会えていないだけだよね（笑））。落ち込まないでね。きっといつか出会えるはず。そういうのって、たいてい思いがけないタイミングでやってくるものだから。何事もうまくいくよう応援しているし、自分のことも大切にしてね。いつでも気軽に立ち寄って、愚痴をこぼしたり、何でも話したりしてね。いつでも話を聞くから。🍁🍁🍁</p>
+    <span class="logo">Friend</span>
+  </div>
+</div>
 <canvas id="confetti"></canvas>
 
 <script>
@@ -231,7 +239,6 @@ const IMG = {
   p4Blur: 'assets/p4_blur.jpg'
 };
 const FOCUS = { hero: 58, p1: 25, p2: 35, p3: 55, p4: 40, p6: 38, p7: 58 };
-const CAPS = { hero: 'ปีที่ 4 · บัณฑิต', p1: 'ปีที่ 1 · เฟรชชี่', p2: 'ปีที่ 3 · ทะเลยามเย็น', p3: 'ปีที่ 2 · ปราสาทในฝัน', p4: 'บทต่อไป', p6: 'รอยยิ้ม', p7: 'คาเฟ่' };
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
@@ -281,18 +288,6 @@ addEventListener('scroll', onScroll, { passive: true });
 addEventListener('resize', onScroll);
 onScroll();
 
-// lightbox
-const lb = $('#lb');
-document.addEventListener('click', e => {
-  const t = e.target.closest('[data-lb]');
-  if (t) {
-    const k = t.dataset.lb;
-    $('#lbImg').src = IMG[k]; $('#lbCap').textContent = CAPS[k] || '';
-    lb.classList.add('on'); return;
-  }
-  if (e.target.closest('#lb')) lb.classList.remove('on');
-});
-addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('on'); });
 
 // ambient music, synthesized; starts only when the visitor taps the button
 const audio = {
@@ -358,9 +353,16 @@ function confetti() {
   };
   loop();
 }
-$('#cheer').addEventListener('click', confetti);
-const fin = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { setTimeout(confetti, 500); fin.disconnect(); } }), { threshold: .5 });
-fin.observe($('#cheers h2'));
+const letter = $('#letter');
+function openLetter() { letter.classList.add('on'); setTimeout(confetti, 350); }
+$('#openLetter').addEventListener('click', openLetter);
+// a tap on the envelope (not a drag to rotate) opens the letter
+let down = null;
+$('#envelope').addEventListener('pointerdown', e => { down = [e.clientX, e.clientY]; });
+$('#envelope').addEventListener('pointerup', e => { if (down && Math.hypot(e.clientX - down[0], e.clientY - down[1]) < 6) openLetter(); down = null; });
+$('#closeLetter').addEventListener('click', () => letter.classList.remove('on'));
+letter.addEventListener('click', e => { if (e.target === letter) letter.classList.remove('on'); });
+addEventListener('keydown', e => { if (e.key === 'Escape') letter.classList.remove('on'); });
 })();
 </script>
 </body>
